@@ -7,7 +7,7 @@ const Logo = () => {
         maxWidth: "100%",
         maxHeight: "100%", // Ensures the image fits within the container
         objectFit: "contain",
-        height: 400,
+        height: 350,
       }}
     />
   );
