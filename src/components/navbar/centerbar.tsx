@@ -10,12 +10,16 @@ const CenterBar = () => {
         alignItems: "center",
       }}
     >
-      <Box display="flex" flex={1} justifyContent="center"></Box>
+      <Box
+        sx={{ display: { xs: "none", sm: "flex" } }}
+        flex={1}
+        justifyContent="center"
+      ></Box>
       <Box display="flex" flex={1} justifyContent="center" sx={{ padding: 1 }}>
         <Logo />
       </Box>
       <Box
-        display="flex"
+        sx={{ display: { xs: "none", sm: "flex" } }}
         flex={1}
         alignItems="center"
         justifyContent="flex-end"
