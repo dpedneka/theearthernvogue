@@ -1,4 +1,4 @@
-import { Toolbar, Box, Button, TextField, InputAdornment } from "@mui/material";
+import { Toolbar, Box, TextField } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import Link from "next/link";
 

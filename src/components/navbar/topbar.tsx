@@ -1,5 +1,5 @@
 import { Call, Email, WhatsApp } from "@mui/icons-material";
-import { AppBar, Container, Link, Toolbar, Typography } from "@mui/material";
+import { AppBar, Container, Toolbar, Typography } from "@mui/material";
 
 const TopBar = () => {
   return (

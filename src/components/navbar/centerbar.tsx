@@ -1,5 +1,5 @@
 import { Toolbar, Box, IconButton, Button } from "@mui/material";
-import { Search, ShoppingCart, AccountCircle } from "@mui/icons-material";
+import { ShoppingCart, AccountCircle } from "@mui/icons-material";
 import Logo from "../logo";
 
 const CenterBar = () => {

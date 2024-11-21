@@ -1,5 +1,4 @@
 import Loader from "@/components/loader";
-import Logo from "@/components/logo";
 
 export default function Home() {
   return (
