@@ -54,9 +54,7 @@ const Login2 = () => {
                     textAlign="center"
                     color="textSecondary"
                     mb={1}
-                  >
-                    Your Social Campaigns
-                  </Typography>
+                  ></Typography>
                 }
                 subtitle={
                   <Stack
@@ -70,7 +68,7 @@ const Login2 = () => {
                       variant="h6"
                       fontWeight="500"
                     >
-                      New to Modernize?
+                      Admin Login Only -
                     </Typography>
                     <Typography
                       component={Link}

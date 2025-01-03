@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const LinkStyled = styled(Link)(() => ({
   height: "70px",
-  width: "180px",
+  width: "200px",
   overflow: "hidden",
   display: "block",
 }));
@@ -12,10 +12,15 @@ const LinkStyled = styled(Link)(() => ({
 const Logo = () => {
   return (
     <LinkStyled href="/">
-      <Image src="/images/logos/dark-logo.svg" alt="logo" height={70} width={174} priority />
+      <Image
+        src="/images/logos/TEV_logo.webp"
+        alt="logo"
+        height={70}
+        width={195}
+        priority
+      />
     </LinkStyled>
   );
 };
 
 export default Logo;
-  

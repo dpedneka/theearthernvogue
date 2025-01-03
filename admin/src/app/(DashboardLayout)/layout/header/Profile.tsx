@@ -12,9 +12,12 @@ import {
 } from "@mui/material";
 
 import { IconListCheck, IconMail, IconUser } from "@tabler/icons-react";
+import { useAuth } from "@/providers/context/AuthContext";
 
 const Profile = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);
+  const { logout } = useAuth();
+
   const handleClick2 = (event: any) => {
     setAnchorEl2(event.currentTarget);
   };
@@ -38,7 +41,7 @@ const Profile = () => {
         onClick={handleClick2}
       >
         <Avatar
-          src="/images/profile/user-1.jpg"
+          src="/images/profile/user-2.jpg"
           alt="image"
           sx={{
             width: 35,
@@ -83,11 +86,12 @@ const Profile = () => {
         </MenuItem>
         <Box mt={1} py={1} px={2}>
           <Button
-            href="/authentication/login"
+            // href="/authentication/login"
             variant="outlined"
             color="primary"
-            component={Link}
+            // component={Link}
             fullWidth
+            onClick={logout}
           >
             Logout
           </Button>
