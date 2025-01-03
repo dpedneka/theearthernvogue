@@ -1,7 +1,8 @@
 import { useMediaQuery, Box, Drawer } from "@mui/material";
 import SidebarItems from "./SidebarItems";
 import { Upgrade } from "./Updrade";
-import { Sidebar, Logo } from "react-mui-sidebar";
+import { Sidebar } from "react-mui-sidebar";
+import Logo from "../shared/logo/Logo";
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -70,7 +71,15 @@ const MSidebar = ({
               {/* ------------------------------------------- */}
               {/* Logo */}
               {/* ------------------------------------------- */}
-              <Logo img="/images/logos/TEV_logo.webp" />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  paddingTop: "15px",
+                }}
+              >
+                <Logo />
+              </div>
               <Box>
                 {/* ------------------------------------------- */}
                 {/* Sidebar Items */}
@@ -115,7 +124,15 @@ const MSidebar = ({
           {/* ------------------------------------------- */}
           {/* Logo */}
           {/* ------------------------------------------- */}
-          <Logo img="/images/logos/TEV_logo.webp" />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: "15px",
+            }}
+          >
+            <Logo />
+          </div>
           {/* ------------------------------------------- */}
           {/* Sidebar Items */}
           {/* ------------------------------------------- */}
