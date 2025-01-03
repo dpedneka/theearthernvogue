@@ -6,9 +6,16 @@ const bodyParser = require("body-parser");
 const cors = require("cors"); // Import CORS middleware
 
 const config = require("./config");
+
 const authRoutes = require("./routes/authRoutes");
-const lyricsRoutes = require("./routes/lyricsRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+
+const customerOrderRoutes = require("./routes/customerOrderRoutes");
+const customerRoutes = require("./routes/customerRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const productCategoryRoutes = require("./routes/productCategoryRoutes");
+const productRoutes = require("./routes/productRoutes");
+const supplierOrderRoutes = require("./routes/supplierOrderRoutes");
+const supplierRoutes = require("./routes/supplierRoutes");
 
 require("dotenv").config(); // Load environment variables
 
@@ -44,8 +51,14 @@ app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/lyrics", lyricsRoutes);
-app.use("/api/admin", adminRoutes);
+
+app.use("/api/customer-orders", customerOrderRoutes);
+app.use("/api/customers", customerRoutes);
+app.use("/api/product-categories", productCategoryRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/supplier-orders", supplierOrderRoutes);
+app.use("/api/suppliers", supplierRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
