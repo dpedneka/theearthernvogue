@@ -14,8 +14,9 @@ const customerRoutes = require("./routes/customerRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const productCategoryRoutes = require("./routes/productCategoryRoutes");
 const productRoutes = require("./routes/productRoutes");
-const supplierOrderRoutes = require("./routes/supplierOrderRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
+const supplierOrderDetailRoutes = require("./routes/supplierOrderDetailsRoutes");
+const supplierOrderRoutes = require("./routes/supplierOrderRoutes");
 
 require("dotenv").config(); // Load environment variables
 
@@ -54,9 +55,13 @@ app.use("/api/auth", authRoutes);
 
 app.use("/api/customer-orders", customerOrderRoutes);
 app.use("/api/customers", customerRoutes);
+
 app.use("/api/product-categories", productCategoryRoutes);
 app.use("/api/products", productRoutes);
+
 app.use("/api/orders", orderRoutes);
+
+app.use("/api/supplier-order-details", supplierOrderDetailRoutes);
 app.use("/api/supplier-orders", supplierOrderRoutes);
 app.use("/api/suppliers", supplierRoutes);
 

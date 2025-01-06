@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 
 const productCategorySchema = new mongoose.Schema(
   {
-    productCategoryId: { type: String, required: true, unique: true },
     productCategory: { type: String, required: true },
-    productSubCategory: { type: String, required: true },
-    productDescription: { type: String },
+    productCatDesc: { type: String },
+    parent: { type: mongoose.Schema.Types.ObjectId, ref: "ProductCategory" },
   },
   { collection: "productCategories" }
 ); // Specify the collection name explicitly

@@ -2,9 +2,9 @@ const ProductCategory = require("../models/ProductCategory");
 
 exports.addProductCategory = async (req, res) => {
   try {
-    const category = new ProductCategory(req.body);
-    await category.save();
-    res.status(201).send(category);
+    const categories = ProductCategory.insertMany(req.body);
+    await categories.save();
+    res.status(201).send(categories);
   } catch (error) {
     res.status(400).send(error);
   }
@@ -12,7 +12,7 @@ exports.addProductCategory = async (req, res) => {
 
 exports.getProductCategories = async (req, res) => {
   try {
-    const categories = await ProductCategory.find();
+    const categories = await ProductCategory.find().populate("parent");
     res.status(200).send(categories);
   } catch (error) {
     res.status(500).send(error);

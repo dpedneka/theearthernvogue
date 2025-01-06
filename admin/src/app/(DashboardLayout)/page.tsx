@@ -8,7 +8,6 @@ import RecentTransactions from "@/app/(DashboardLayout)/components/dashboard/Rec
 import ProductPerformance from "@/app/(DashboardLayout)/components/dashboard/ProductPerformance";
 import Blog from "@/app/(DashboardLayout)/components/dashboard/Blog";
 import MonthlyEarnings from "@/app/(DashboardLayout)/components/dashboard/MonthlyEarnings";
-import ProtectedRoute from "@/routes/ProtectedRoutes";
 
 const Dashboard = () => {
   return (

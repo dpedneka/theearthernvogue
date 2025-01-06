@@ -15,9 +15,9 @@ router.post("/", addProductCategory);
 router.get("/", getProductCategories);
 
 // Update a product category
-router.put("/:id", updateProductCategory);
+router.post("/update/:id", updateProductCategory);
 
 // Delete a product category
-router.delete("/:id", deleteProductCategory);
+router.post("/delete/:id", deleteProductCategory);
 
 module.exports = router;

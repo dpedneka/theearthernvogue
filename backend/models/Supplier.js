@@ -7,19 +7,6 @@ const supplierSchema = new mongoose.Schema({
   phoneNumber: { type: String, required: true },
   email: { type: String, required: true },
   notes: { type: String },
-  deliveryPlacedDate: { type: Date },
-  deliveryDate: { type: Date },
-  deliveryStatus: {
-    type: String,
-    enum: ["Pending", "Completed"],
-    default: "Pending",
-  },
-  orderCost: { type: Number },
-  packagingCharges: { type: Number },
-  deliveryCharges: { type: Number },
-  totalPayment: { type: Number },
-  advancedPayment: { type: Number },
-  pendingPayment: { type: Number },
 });
 
 module.exports = mongoose.model("Supplier", supplierSchema);

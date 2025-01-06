@@ -2,7 +2,7 @@ const SupplierOrder = require("../models/SupplierOrder");
 
 exports.addSupplierOrder = async (req, res) => {
   try {
-    const supplierOrder = new SupplierOrder(req.body);
+    const supplierOrder = SupplierOrder.insertMany(req.body);
     await supplierOrder.save();
     res.status(201).json(supplierOrder);
   } catch (err) {
