@@ -23,10 +23,30 @@ const Menuitems = [
     href: "/",
   },
   {
+    navlabel: true,
+    subheader: "Products",
+  },
+  {
     id: uniqueId(),
     title: "Products",
     icon: IconLayoutDashboard,
     href: "/products",
+  },
+  {
+    id: uniqueId(),
+    title: "Product Categories",
+    icon: IconLayoutDashboard,
+    href: "/products/categories",
+  },
+  {
+    navlabel: true,
+    subheader: "Suppliers",
+  },
+  {
+    id: uniqueId(),
+    title: "Suppliers",
+    icon: IconLayoutDashboard,
+    href: "/suppliers",
   },
   {
     navlabel: true,

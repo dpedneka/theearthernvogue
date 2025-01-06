@@ -12,26 +12,23 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { Product } from "./schemas";
 import DashboardCard from "../components/shared/DashboardCard";
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "@/api/products";
-import { IconHttpDelete, IconPencil } from "@tabler/icons-react";
+import { getAllSuppliers } from "@/api/suppliers";
+import { IconPencil } from "@tabler/icons-react";
 import { Delete } from "@mui/icons-material";
 import Link from "next/link";
 
-const Products = () => {
-  // const [products, setProducts] = useState<Product[]>([]);
-
-  const productsQuery = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
+const Suppliers = () => {
+  const suppliersQuery = useQuery({
+    queryKey: ["suppliers"],
+    queryFn: getAllSuppliers,
   });
 
   return (
-    <DashboardCard title="Product Catalogue">
+    <DashboardCard title="Suppliers List">
       <Box sx={{ overflow: "auto", width: { xs: "280px", sm: "auto" } }}>
-        <Link href={"/products/add"}>Add Product</Link>
+        <Link href={"/suppliers/add"}>Add Supplier</Link>
         <Table
           aria-label="simple table"
           sx={{
@@ -41,39 +38,29 @@ const Products = () => {
         >
           <TableHead>
             <TableRow>
-              {/* <TableCell align="right">
-                <Typography variant="subtitle2" fontWeight={600}>
-                  Product Image
-                </Typography>
-              </TableCell> */}
               <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Product Name
+                  Supplier Name
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Category
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="subtitle2" fontWeight={600}>
-                  Status
+                  Contact Name
                 </Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Price
+                  Phone Number
                 </Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography variant="subtitle2" fontWeight={600}>
-                  MRP
+                  Email
                 </Typography>
               </TableCell>
               <TableCell align="right">
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Quantity
+                  Notes
                 </Typography>
               </TableCell>
               <TableCell align="right" colSpan={2}>
@@ -84,39 +71,23 @@ const Products = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {productsQuery.data?.map((product: any) => (
-              <TableRow key={product.productName}>
+            {suppliersQuery.data?.map((supplier: any) => (
+              <TableRow key={supplier.supplierName}>
                 <TableCell>
-                  <Typography variant="h6">{product.productName}</Typography>
+                  <Typography variant="h6">{supplier.supplierName}</Typography>
                 </TableCell>
+
                 <TableCell>
-                  <Typography variant="h6">
-                    {product.category.productCategory}
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    sx={{
-                      px: "4px",
-                      backgroundColor: `${
-                        product.status ? "success.main" : "secondary.main"
-                      }`,
-                      color: "#fff",
-                    }}
-                    size="small"
-                    label={product.status}
-                  ></Chip>
+                  <Typography variant="h6">{supplier.contactName}</Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">
-                    Rs. {product.productPrice}
-                  </Typography>
+                  <Typography variant="h6">{supplier.phoneNumber}</Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">Rs. {product.MRP}</Typography>
+                  <Typography variant="h6">{supplier.email}</Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">{product.totalQuantity}</Typography>
+                  <Typography variant="h6">{supplier.notes}</Typography>
                 </TableCell>
 
                 <TableCell align="right">
@@ -138,4 +109,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Suppliers;
