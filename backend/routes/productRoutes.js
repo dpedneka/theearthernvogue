@@ -3,16 +3,32 @@ const {
   getAllProducts,
   updateProductById,
   deleteProductById,
+  getProductById,
 } = require("../controllers/productController");
 const express = require("express");
 const router = express.Router();
+const { protect, authorize } = require("../middleware/authMiddleware");
+const upload = require("../middleware/awsUploadMiddleware");
 
-router.post("/", addProduct);
+router.post(
+  "/",
+  protect,
+  authorize("admin"),
+  upload.single("image"),
+  addProduct
+);
 
 router.get("/", getAllProducts);
+router.get("/:id", getProductById);
 
 // Update Product By ID
-router.post("/update/:id", updateProductById);
+router.post(
+  "/update/:id",
+  protect,
+  authorize("admin"),
+  upload.single("image"),
+  updateProductById
+);
 
 // Delete Product By ID
 router.post("/delete/:id", deleteProductById);

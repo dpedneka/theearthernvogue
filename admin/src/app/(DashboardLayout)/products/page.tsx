@@ -12,21 +12,39 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { Product } from "./schemas";
 import DashboardCard from "../components/shared/DashboardCard";
-import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "@/api/products";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { deleteProduct, getAllProducts } from "@/api/products";
 import { IconHttpDelete, IconPencil } from "@tabler/icons-react";
 import { Delete } from "@mui/icons-material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Products = () => {
   // const [products, setProducts] = useState<Product[]>([]);
+  const queryClient = useQueryClient();
+  const router = useRouter();
 
   const productsQuery = useQuery({
     queryKey: ["products"],
     queryFn: getAllProducts,
   });
+
+  const deleteProductMutation = useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: (response) => {
+      console.log(response);
+      queryClient.invalidateQueries({ queryKey: ["deleteProduct"] });
+      router.refresh();
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const onDeleteHandler = (productId: any) => {
+    deleteProductMutation.mutate(productId);
+  };
 
   return (
     <DashboardCard title="Product Catalogue">
@@ -87,10 +105,12 @@ const Products = () => {
             {productsQuery.data?.map((product: any) => (
               <TableRow key={product.productName}>
                 <TableCell>
-                  <Typography variant="h6">{product.productName}</Typography>
+                  <Typography variant="h6" style={{ fontWeight: 400 }}>
+                    {product.productName}
+                  </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="h6">
+                  <Typography variant="h6" style={{ fontWeight: 400 }}>
                     {product.category.productCategory}
                   </Typography>
                 </TableCell>
@@ -108,25 +128,31 @@ const Products = () => {
                   ></Chip>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">
+                  <Typography variant="h6" style={{ fontWeight: 400 }}>
                     Rs. {product.productPrice}
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">Rs. {product.MRP}</Typography>
+                  <Typography variant="h6" style={{ fontWeight: 400 }}>
+                    Rs. {product.MRP}
+                  </Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Typography variant="h6">{product.totalQuantity}</Typography>
+                  <Typography variant="h6" style={{ fontWeight: 400 }}>
+                    {product.totalQuantity}
+                  </Typography>
                 </TableCell>
 
                 <TableCell align="right">
                   <Typography variant="h6" style={{ cursor: "pointer" }}>
-                    <IconPencil stroke={1.5} size="1.3rem" />
+                    <Link href={`/products/update?editId=${product._id}`}>
+                      <IconPencil stroke={1.5} size="1.3rem" />
+                    </Link>
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
                   <Typography variant="h6" style={{ cursor: "pointer" }}>
-                    <Delete />
+                    <Delete onClick={() => onDeleteHandler(product._id)} />
                   </Typography>
                 </TableCell>
               </TableRow>

@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema(
     productPrice: { type: Number, required: true },
     MRP: { type: Number, required: true },
     totalQuantity: { type: Number, required: true },
-    size: { type: String, required: true }, // "Length, Width, Breadth
+    size: { type: String, required: true }, // "Length*Width*Breadth"
     weight: { type: String, required: true },
     // quantitySold: { type: Number, default: 0 },
     // quantityInStock: { type: Number, required: true },

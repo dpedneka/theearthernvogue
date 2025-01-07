@@ -12,23 +12,25 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import DashboardCard from "../components/shared/DashboardCard";
 import { useQuery } from "@tanstack/react-query";
-import { getAllSuppliers } from "@/api/suppliers";
+import { getAllProductCategories } from "@/api/products";
 import { IconPencil } from "@tabler/icons-react";
 import { Delete } from "@mui/icons-material";
 import Link from "next/link";
+import DashboardCard from "../../components/shared/DashboardCard";
 
-const Suppliers = () => {
-  const suppliersQuery = useQuery({
-    queryKey: ["suppliers"],
-    queryFn: getAllSuppliers,
+const ProductCategories = () => {
+  const productCategoriesQuery = useQuery({
+    queryKey: ["productCategories"],
+    queryFn: getAllProductCategories,
   });
 
+  console.log(productCategoriesQuery.data);
+
   return (
-    <DashboardCard title="Suppliers List">
+    <DashboardCard title="Product Catalogue">
       <Box sx={{ overflow: "auto", width: { xs: "280px", sm: "auto" } }}>
-        <Link href={"/suppliers/add"}>Add Supplier</Link>
+        <Link href={"/products/categories/add"}>Add Product</Link>
         <Table
           aria-label="simple table"
           sx={{
@@ -40,27 +42,17 @@ const Suppliers = () => {
             <TableRow>
               <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Supplier Name
+                  Product Category
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Contact Name
+                  Category Description
                 </Typography>
               </TableCell>
-              <TableCell align="right">
+              <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
-                  Phone Number
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle2" fontWeight={600}>
-                  Email
-                </Typography>
-              </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle2" fontWeight={600}>
-                  Notes
+                  Parent
                 </Typography>
               </TableCell>
               <TableCell align="right" colSpan={2}>
@@ -71,32 +63,21 @@ const Suppliers = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {suppliersQuery.data?.map((supplier: any) => (
-              <TableRow key={supplier.supplierName}>
+            {productCategoriesQuery.data?.map((product: any) => (
+              <TableRow key={product.productCategory}>
                 <TableCell>
                   <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {supplier.supplierName}
+                    {product.productCategory}
                   </Typography>
                 </TableCell>
-
                 <TableCell>
                   <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {supplier.contactName}
+                    {product.productCatDesc}
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
                   <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {supplier.phoneNumber}
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {supplier.email}
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {supplier.notes}
+                    {product.parent ? product.parent.productCategory : "Parent"}
                   </Typography>
                 </TableCell>
 
@@ -119,4 +100,4 @@ const Suppliers = () => {
   );
 };
 
-export default Suppliers;
+export default ProductCategories;
