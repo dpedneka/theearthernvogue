@@ -2,9 +2,12 @@ import Loader from "@/components/loader";
 
 export default function Home() {
   return (
-    <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid items-center justify-items-center p-8 ">
       <Loader />
-      <h1 className="font-bold text-xl">Stay Tuned!! We are Coming Soon!!</h1>
+      <div className="stay-tuned-message text-center">
+        <p>Stay Tuned</p>
+        <span>Something delightful is being served!</span>
+      </div>
     </div>
   );
 }
