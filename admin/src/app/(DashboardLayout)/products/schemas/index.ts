@@ -21,6 +21,17 @@ export const productSchema = z.object({
   status: z.string().min(1, { message: "Status is required" }),
 });
 
+export const productCategoriesSchema = z.object({
+  productCategory: z.string().nonempty("Product Category Name is required"),
+  productCatDesc: z.string().min(1, { message: "Lyrics is required" }),
+  parent: z.object({
+    _id: z.string(),
+    productCategory: z.string(),
+  }),
+});
+
 export type ProductForm = z.infer<typeof productSchema>;
+export type ProductCategoryForm = z.infer<typeof productCategoriesSchema>;
 
 export type Product = ProductForm & { id: string };
+export type ProductCategory = ProductCategoryForm & { id: string };
