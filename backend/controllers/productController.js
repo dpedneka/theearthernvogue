@@ -1,8 +1,13 @@
 const Product = require("../models/Product");
 
 exports.addProduct = async (req, res) => {
+  const updateData = { ...req.body };
+
+  if (req.file) {
+    updateData.productImage = `/${req.file.key}`;
+  }
   try {
-    const product = new Product(req.body);
+    const product = new Product(updateData);
     await product.save();
     res.status(201).json(product);
   } catch (err) {
@@ -35,11 +40,13 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProductById = async (req, res) => {
   const { productName } = req.body;
-  console.log(req.params.id);
-  console.log(productName);
-  console.log(req.body);
+  const updateData = { ...req.body };
+
+  if (req.file) {
+    updateData.productImage = `/${req.file.key}`;
+  }
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    const product = await Product.findByIdAndUpdate(req.params.id, updateData, {
       new: true,
     });
     res.status(200).send(product);

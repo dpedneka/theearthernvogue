@@ -66,6 +66,11 @@ const Products = () => {
               </TableCell> */}
               <TableCell>
                 <Typography variant="subtitle2" fontWeight={600}>
+                  Product Image
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="subtitle2" fontWeight={600}>
                   Product Name
                 </Typography>
               </TableCell>
@@ -105,13 +110,35 @@ const Products = () => {
             {productsQuery.data?.map((product: any) => (
               <TableRow key={product.productName}>
                 <TableCell>
-                  <Typography variant="h6" style={{ fontWeight: 400 }}>
+                  <Typography
+                    variant="h6"
+                    style={{ width: 100, fontWeight: 400, overflow: "hidden" }}
+                  >
+                    <img
+                      height={"100"}
+                      width={"100"}
+                      src={`${process.env.NEXT_PUBLIC_AMAZON_S3}${product.productImage}`}
+                      // src={`https://swarshrungarbucket.s3.ap-south-1.amazonaws.com/products/${product.productImage}`}
+                    />
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography
+                    variant="h6"
+                    title={product.productName}
+                    style={{
+                      width: 100,
+                      fontWeight: 400,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
                     {product.productName}
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant="h6" style={{ fontWeight: 400 }}>
-                    {product.category.productCategory}
+                    {product?.category?.productCategory}
                   </Typography>
                 </TableCell>
                 <TableCell>
