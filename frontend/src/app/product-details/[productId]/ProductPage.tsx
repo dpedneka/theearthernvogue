@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Box,
+  // Box,
   Typography,
   Button,
   IconButton,
@@ -10,8 +10,8 @@ import {
   Container,
   CardMedia,
 } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+// import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+// import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
@@ -25,23 +25,25 @@ const ProductPage = ({ productDetail }: any) => {
     );
   };
 
-  const images = [
-    "/images/product1.jpg",
-    "/images/product2.jpg",
-    "/images/product3.jpg",
-    "/images/product4.jpg",
-  ];
+  // const images = [
+  //   "/images/product1.jpg",
+  //   "/images/product2.jpg",
+  //   "/images/product3.jpg",
+  //   "/images/product4.jpg",
+  // ];
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    prevArrow: <ArrowBackIosNewIcon />,
-    nextArrow: <ArrowForwardIosIcon />,
-  };
-  let productDescription = DOMPurify.sanitize(productDetail.productDescription);
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   prevArrow: <ArrowBackIosNewIcon />,
+  //   nextArrow: <ArrowForwardIosIcon />,
+  // };
+  const productDescription = DOMPurify.sanitize(
+    productDetail.productDescription
+  );
 
   return (
     <Container maxWidth="xl" style={{ padding: 0 }}>

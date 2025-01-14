@@ -2,7 +2,7 @@
 import { notFound, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ProductPage from "./ProductPage";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { getProductDetailsByProductName } from "@/utils/api/products";
 import { CircularProgress, Container } from "@mui/material";
 
