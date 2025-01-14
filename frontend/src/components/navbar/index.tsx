@@ -14,35 +14,6 @@ export default function Navbar() {
         <CenterBar />
         {/* Bottom Section */}
         <BottomBar />
-        {/* Mobile Bottom Navigation */}
-        <Toolbar
-          sx={{
-            position: "fixed",
-            bottom: 0,
-            width: "100%",
-            justifyContent: "space-between",
-            bgcolor: "primary.light",
-            display: { xs: "flex", md: "none" },
-          }}
-        >
-          <IconButton>
-            <AccountCircle color={"success"} />
-          </IconButton>
-          <Typography
-            variant="h6"
-            sx={{
-              flexGrow: 1,
-              textAlign: "center",
-              color: "white",
-              fontWeight: 600,
-            }}
-          >
-            LOGO
-          </Typography>
-          <IconButton>
-            <ShoppingCart color="success" />
-          </IconButton>
-        </Toolbar>
       </AppBar>
     </>
   );

@@ -5,6 +5,7 @@ import Layout from "@/components/layout";
 import { ThemeProvider } from "@mui/material";
 import theme from "@/components/theme";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import QCProvider from "@/components/providers/tanstack/QCProvider";
 
 export const metadata: Metadata = {
   title: "The Earthern Vogue",
@@ -22,9 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased ${raleway.className}`}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Layout>{children}</Layout>
-          </ThemeProvider>
+          <QCProvider>
+            <ThemeProvider theme={theme}>
+              <Layout>{children}</Layout>
+            </ThemeProvider>
+          </QCProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

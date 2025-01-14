@@ -46,6 +46,10 @@ const Products = () => {
     deleteProductMutation.mutate(productId);
   };
 
+  const toSlug = (text: any) => {
+    return text.toLowerCase().replace(/\s+/g, "-");
+  };
+
   return (
     <DashboardCard title="Product Catalogue">
       <Box sx={{ overflow: "auto", width: { xs: "280px", sm: "auto" } }}>

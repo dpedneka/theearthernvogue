@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { convertHtmlToText } from "@/helper/html";
 
 const ProductForms = ({
   onSubmit,
@@ -36,6 +37,7 @@ const ProductForms = ({
   const category: any = watch("category");
   const status = watch("status");
   const productImage: any = watch("productImage");
+  const productDescription = watch("productDescription");
 
   useEffect(() => {
     if (suppliersQuery.data) {
@@ -127,6 +129,7 @@ const ProductForms = ({
             fullWidth
             multiline
             rows={2}
+            value={convertHtmlToText(productDescription)}
             {...register("productDescription")}
             error={!!errors.productDescription}
             helperText={errors.productDescription?.message}

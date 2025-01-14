@@ -38,8 +38,23 @@ exports.getProductById = async (req, res) => {
   }
 };
 
+exports.getProductByProductName = async (req, res) => {
+  const productName = fromSlug(req.params.productName);
+
+  try {
+    const product = await Product.findOne({
+      productName: { $regex: new RegExp(`^${productName}$`, "i") },
+    })
+      .populate("supplier")
+      .populate("category");
+    if (!product) return res.status(404).json({ message: "Product not found" });
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 exports.updateProductById = async (req, res) => {
-  const { productName } = req.body;
   const updateData = { ...req.body };
 
   if (req.file) {
@@ -62,4 +77,12 @@ exports.deleteProductById = async (req, res) => {
   } catch (error) {
     res.status(500).send(error);
   }
+};
+
+const fromSlug = (slug) => {
+  // Replace hyphens with spaces and capitalize each word's first letter
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };

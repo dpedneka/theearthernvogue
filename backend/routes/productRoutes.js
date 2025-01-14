@@ -4,6 +4,7 @@ const {
   updateProductById,
   deleteProductById,
   getProductById,
+  getProductByProductName,
 } = require("../controllers/productController");
 const express = require("express");
 const router = express.Router();
@@ -20,6 +21,7 @@ router.post(
 
 router.get("/", getAllProducts);
 router.get("/:id", getProductById);
+router.get("/details/:productName", getProductByProductName);
 
 // Update Product By ID
 router.post(

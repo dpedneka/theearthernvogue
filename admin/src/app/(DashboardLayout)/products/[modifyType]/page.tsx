@@ -18,6 +18,7 @@ import {
   updateProduct,
 } from "@/api/products";
 import DashboardCard from "../../components/shared/DashboardCard";
+import { convertTextToHtml } from "@/helper/html";
 
 const AddProduct = () => {
   const [modType, setModType] = useState<any>("add");
@@ -68,7 +69,9 @@ const AddProduct = () => {
       if (key !== "image") {
         if (key === "supplier" || key === "category") {
           formData.append(key, newProduct[key] && newProduct[key]._id);
-        } else formData.append(key, newProduct[key]);
+        } else if (key === "productDescription")
+          formData.append(key, convertTextToHtml(newProduct[key]));
+        else formData.append(key, newProduct[key]);
       }
     });
 
