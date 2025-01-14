@@ -1,5 +1,4 @@
-import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
-import { ShoppingCart, AccountCircle } from "@mui/icons-material";
+import { AppBar } from "@mui/material";
 import TopBar from "./topbar";
 import CenterBar from "./centerbar";
 import BottomBar from "./bottombar";
