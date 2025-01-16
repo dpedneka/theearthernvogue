@@ -1,11 +1,16 @@
+import { DeliveryDining } from "@mui/icons-material";
 import {
   IconAperture,
+  IconBrandProducthunt,
+  IconCategory,
   IconCopy,
   IconLayoutDashboard,
   IconLogin,
   IconMoodHappy,
+  IconTruckDelivery,
   IconTypography,
   IconUserPlus,
+  IconUsers,
 } from "@tabler/icons-react";
 
 import { uniqueId } from "lodash";
@@ -29,13 +34,13 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: "Products",
-    icon: IconLayoutDashboard,
+    icon: IconBrandProducthunt,
     href: "/products",
   },
   {
     id: uniqueId(),
     title: "Product Categories",
-    icon: IconLayoutDashboard,
+    icon: IconCategory,
     href: "/products/categories",
   },
   {
@@ -45,57 +50,57 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: "Suppliers",
-    icon: IconLayoutDashboard,
+    icon: IconUsers,
     href: "/suppliers",
   },
   {
     navlabel: true,
-    subheader: "Utilities",
+    subheader: "Order",
   },
   {
     id: uniqueId(),
-    title: "Typography",
-    icon: IconTypography,
+    title: "Create Order",
+    icon: IconTruckDelivery,
     href: "/utilities/typography",
   },
   {
     id: uniqueId(),
-    title: "Shadow",
-    icon: IconCopy,
+    title: "View Orders",
+    icon: DeliveryDining,
     href: "/utilities/shadow",
   },
-  {
-    navlabel: true,
-    subheader: "Auth",
-  },
-  {
-    id: uniqueId(),
-    title: "Login",
-    icon: IconLogin,
-    href: "/authentication/login",
-  },
-  {
-    id: uniqueId(),
-    title: "Register",
-    icon: IconUserPlus,
-    href: "/authentication/register",
-  },
-  {
-    navlabel: true,
-    subheader: "Extra",
-  },
-  {
-    id: uniqueId(),
-    title: "Icons",
-    icon: IconMoodHappy,
-    href: "/icons",
-  },
-  {
-    id: uniqueId(),
-    title: "Sample Page",
-    icon: IconAperture,
-    href: "/sample-page",
-  },
+  // {
+  //   navlabel: true,
+  //   subheader: "Auth",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Login",
+  //   icon: IconLogin,
+  //   href: "/authentication/login",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Register",
+  //   icon: IconUserPlus,
+  //   href: "/authentication/register",
+  // },
+  // {
+  //   navlabel: true,
+  //   subheader: "Extra",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Icons",
+  //   icon: IconMoodHappy,
+  //   href: "/icons",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Sample Page",
+  //   icon: IconAperture,
+  //   href: "/sample-page",
+  // },
 ];
 
 export default Menuitems;
