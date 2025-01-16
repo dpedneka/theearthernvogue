@@ -4,7 +4,7 @@ const Logo = () => {
       src="/images/logo/TEV_logo.webp" // Replace with your logo path
       alt="Logo"
       style={{
-        height: 80,
+        height: 75,
       }}
     />
   );

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -8,6 +8,10 @@ import {
   InputBase,
   Badge,
   Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -18,13 +22,26 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import TikTokIcon from "@mui/icons-material/MusicNote";
-import DiscordIcon from "@mui/icons-material/SportsEsports";
 import Logo from "../logo";
+import {
+  CellWifiSharp,
+  Dashboard,
+  FacebookTwoTone,
+  Home,
+  ListAlt,
+  SensorWindowSharp,
+} from "@mui/icons-material";
 
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  // State for mobile menu toggle
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = (open: boolean) => () => {
+    setMobileMenuOpen(open);
+  };
 
   return (
     <AppBar position="static" color="inherit" elevation={1}>
@@ -41,11 +58,11 @@ const Header = () => {
             }}
           >
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              <Logo />.
+              <Logo />
             </Typography>
           </Toolbar>
           <Toolbar sx={{ backgroundColor: "#fff" }}>
-            <IconButton>
+            <IconButton onClick={toggleMobileMenu(true)}>
               <MenuIcon />
             </IconButton>
             <Box
@@ -60,7 +77,7 @@ const Header = () => {
             >
               <SearchIcon style={{ color: "#ccc" }} />
               <InputBase
-                placeholder="Search for products"
+                placeholder="What are you looking for?"
                 sx={{ ml: 1, flex: 1 }}
               />
             </Box>
@@ -70,12 +87,55 @@ const Header = () => {
               </Badge>
             </IconButton>
           </Toolbar>
+
+          {/* Mobile Menu Drawer */}
+          <Drawer
+            anchor="left"
+            open={mobileMenuOpen}
+            onClose={toggleMobileMenu(false)}
+          >
+            <Box
+              sx={{ width: 250 }}
+              role="presentation"
+              onClick={toggleMobileMenu(false)}
+              onKeyDown={toggleMobileMenu(false)}
+            >
+              <List>
+                <ListItem>
+                  <Logo />
+                </ListItem>
+                <ListItem>
+                  <Home style={{ marginRight: 3 }} />
+                  <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem>
+                  <ListAlt style={{ marginRight: 3 }} />
+                  <ListItemText primary="Products" />
+                </ListItem>
+                <ListItem>
+                  <AccountCircleIcon style={{ marginRight: 3 }} />
+                  <ListItemText primary="My Account" />
+                </ListItem>
+                <ListItem>
+                  <Dashboard style={{ marginRight: 3 }} />
+                  <ListItemText primary="Wishlist" />
+                </ListItem>
+              </List>
+            </Box>
+          </Drawer>
         </>
       ) : (
         // Desktop View
         <Toolbar>
           {/* Logo and Navigation */}
-          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              paddingY: "5px",
+            }}
+          >
             <Typography
               variant="h6"
               sx={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
@@ -85,19 +145,19 @@ const Header = () => {
             <Box sx={{ ml: 4, display: "flex", gap: 2 }}>
               <Typography
                 variant="body1"
-                sx={{ cursor: "pointer", color: "inherit" }}
+                sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
               >
                 Home
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ cursor: "pointer", color: "inherit" }}
+                sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
               >
                 Games
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ cursor: "pointer", color: "inherit" }}
+                sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
               >
                 Sale
               </Typography>
@@ -113,10 +173,7 @@ const Header = () => {
               <YouTubeIcon />
             </IconButton>
             <IconButton color="default">
-              <TikTokIcon />
-            </IconButton>
-            <IconButton color="default">
-              <DiscordIcon />
+              <FacebookTwoTone />
             </IconButton>
           </Box>
 
@@ -131,9 +188,9 @@ const Header = () => {
                 padding: "0 10px",
               }}
             >
-              <SearchIcon />
+              <SearchIcon style={{ color: "#ccc" }} />
               <InputBase
-                placeholder="Search for products"
+                placeholder="What are you looking for?"
                 sx={{ ml: 1, flex: 1 }}
               />
             </Box>
