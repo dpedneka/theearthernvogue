@@ -23,14 +23,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Logo from "../logo";
-import {
-  CellWifiSharp,
-  Dashboard,
-  FacebookTwoTone,
-  Home,
-  ListAlt,
-  SensorWindowSharp,
-} from "@mui/icons-material";
+import { Dashboard, FacebookTwoTone, Home, ListAlt } from "@mui/icons-material";
+
+import classes from "./header.module.css";
 
 const Header = () => {
   const theme = useTheme();
@@ -50,37 +45,20 @@ const Header = () => {
         <>
           <Toolbar
             sx={{
-              justifyContent: "center",
+              justifyContent: "space-between",
               backgroundColor: "#fff",
               color: "#ccc",
               paddingTop: "10px",
+              paddingBottom: "10px",
               lineHeight: 0,
             }}
           >
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              <Logo />
-            </Typography>
-          </Toolbar>
-          <Toolbar sx={{ backgroundColor: "#fff" }}>
             <IconButton onClick={toggleMobileMenu(true)}>
               <MenuIcon />
             </IconButton>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                backgroundColor: "#f5f5f5",
-                borderRadius: 20,
-                padding: "0 10px",
-                flexGrow: 1,
-              }}
-            >
-              <SearchIcon style={{ color: "#ccc" }} />
-              <InputBase
-                placeholder="What are you looking for?"
-                sx={{ ml: 1, flex: 1 }}
-              />
-            </Box>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              <Logo />
+            </Typography>
             <IconButton>
               <Badge badgeContent={0} color="secondary">
                 <ShoppingCartIcon />
@@ -101,24 +79,50 @@ const Header = () => {
               onKeyDown={toggleMobileMenu(false)}
             >
               <List>
-                <ListItem>
-                  <Logo />
+                <ListItem className="shadow">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      backgroundColor: "#f5f5f5",
+                      padding: "5px 10px",
+                      flexGrow: 1,
+                    }}
+                  >
+                    <SearchIcon style={{ color: "#ccc" }} />
+                    <InputBase
+                      placeholder="What are you looking for?"
+                      sx={{ ml: 1, flex: 1 }}
+                    />
+                  </Box>
                 </ListItem>
-                <ListItem>
-                  <Home style={{ marginRight: 3 }} />
-                  <ListItemText primary="Home" />
+                <ListItem className={`${classes.borderBottom}`}>
+                  <Home style={{ marginRight: 5, fontSize: 16 }} />
+                  <ListItemText
+                    className={`${classes.tevListItem}`}
+                    primary="Home"
+                  />
                 </ListItem>
-                <ListItem>
-                  <ListAlt style={{ marginRight: 3 }} />
-                  <ListItemText primary="Products" />
+                <ListItem className={`${classes.borderBottom}`}>
+                  <ListAlt style={{ marginRight: 5, fontSize: 16 }} />
+                  <ListItemText
+                    className={`${classes.tevListItem}`}
+                    primary="Products"
+                  />
                 </ListItem>
-                <ListItem>
-                  <AccountCircleIcon style={{ marginRight: 3 }} />
-                  <ListItemText primary="My Account" />
+                <ListItem className={`${classes.borderBottom}`}>
+                  <AccountCircleIcon style={{ marginRight: 5, fontSize: 16 }} />
+                  <ListItemText
+                    className={`${classes.tevListItem}`}
+                    primary="My Account"
+                  />
                 </ListItem>
-                <ListItem>
-                  <Dashboard style={{ marginRight: 3 }} />
-                  <ListItemText primary="Wishlist" />
+                <ListItem className={`${classes.borderBottom}`}>
+                  <Dashboard style={{ marginRight: 5, fontSize: 16 }} />
+                  <ListItemText
+                    className={`${classes.tevListItem}`}
+                    primary="Wishlist"
+                  />
                 </ListItem>
               </List>
             </Box>
@@ -145,22 +149,34 @@ const Header = () => {
             <Box sx={{ ml: 4, display: "flex", gap: 2 }}>
               <Typography
                 variant="body1"
-                sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
+                sx={{
+                  cursor: "pointer",
+                  color: "rgba(0, 0, 0, 0.54)",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
               >
+                <Home style={{ marginRight: 3 }} />
                 Home
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
+                sx={{
+                  cursor: "pointer",
+                  color: "rgba(0, 0, 0, 0.54)",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
               >
-                Games
+                <ListAlt style={{ marginRight: 3 }} />
+                Products
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="body1"
                 sx={{ cursor: "pointer", color: "rgba(0, 0, 0, 0.54)" }}
               >
                 Sale
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
 
@@ -184,8 +200,7 @@ const Header = () => {
                 display: "flex",
                 alignItems: "center",
                 backgroundColor: "#f5f5f5",
-                borderRadius: 20,
-                padding: "0 10px",
+                padding: "5px 10px",
               }}
             >
               <SearchIcon style={{ color: "#ccc" }} />
@@ -194,16 +209,19 @@ const Header = () => {
                 sx={{ ml: 1, flex: 1 }}
               />
             </Box>
-            <IconButton>
+            <IconButton style={{ flexDirection: "column" }}>
               <AccountCircleIcon />
+              <div style={{ fontSize: 12 }}>Login</div>
             </IconButton>
-            <IconButton>
+            <IconButton style={{ flexDirection: "column" }}>
               <FavoriteBorderIcon />
+              <div style={{ fontSize: 12 }}>Wishlist</div>
             </IconButton>
-            <IconButton>
+            <IconButton style={{ flexDirection: "column" }}>
               <Badge badgeContent={0} color="primary">
                 <ShoppingCartIcon />
               </Badge>
+              <div style={{ fontSize: 12 }}>Cart</div>
             </IconButton>
           </Box>
         </Toolbar>
