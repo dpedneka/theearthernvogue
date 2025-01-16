@@ -15,7 +15,7 @@ router.post(
   "/",
   protect,
   authorize("admin"),
-  upload.single("image"),
+  upload.array("image", 10),
   addProduct
 );
 
@@ -28,7 +28,7 @@ router.post(
   "/update/:id",
   protect,
   authorize("admin"),
-  upload.single("image"),
+  upload.array("image", 10),
   updateProductById
 );
 

@@ -25,7 +25,6 @@ const ProductForms = ({
     register,
     control,
     handleSubmit,
-    reset,
     watch,
     formState: { errors },
   } = useForm<ProductForm>({
@@ -63,6 +62,7 @@ const ProductForms = ({
     }
   }, [productCategoriesQuery]);
 
+  console.log(productImage);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
@@ -208,12 +208,9 @@ const ProductForms = ({
         </Grid>
         <Grid item xs={12} lg={6}>
           <label>Upload Product Image - </label>
-          <label>
-            {productImage && productImage.length > 0 && productImage[0].name}
-          </label>
           <Button variant="contained" color="secondary" component="label">
             Upload Image
-            <input type="file" hidden {...register("productImage")} />
+            <input type="file" multiple hidden {...register("productImage")} />
           </Button>
         </Grid>
 

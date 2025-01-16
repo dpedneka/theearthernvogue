@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema(
       ref: "ProductCategory",
       required: true,
     },
-    productImage: { type: String },
+    productImage: [{ type: String }],
     productDescription: { type: String },
     SKU: { type: String, required: true }, // Brand Initials - Category Code - Product Code - Unique ID/Variant
     productPrice: { type: Number, required: true },

@@ -121,7 +121,7 @@ const Products = () => {
                     <img
                       height={"100"}
                       width={"100"}
-                      src={`${process.env.NEXT_PUBLIC_AMAZON_S3}${product.productImage}`}
+                      src={`${process.env.NEXT_PUBLIC_AMAZON_S3}/${product.productImage[0]}`}
                       // src={`https://swarshrungarbucket.s3.ap-south-1.amazonaws.com/products/${product.productImage}`}
                     />
                   </Typography>

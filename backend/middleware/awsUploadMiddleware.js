@@ -27,13 +27,20 @@ const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket: "swarshrungarbucket",
+    acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
       const ext = path.extname(file.originalname);
-      const folderName = req.baseUrl?.split("/")[2];
-      cb(null, `${folderName}/${Date.now().toString() + ext}`); // Filename as current timestamp + extension
+      const folderName = req.baseUrl?.split("/")[2] || "products";
+      cb(
+        null,
+        `${folderName}/${Date.now().toString()}-${file.originalname.replaceAll(
+          " ",
+          "-"
+        )}`
+      ); // Filename as current timestamp + extension
     },
   }),
   limits: { fileSize: 1 * 1024 * 1024 },

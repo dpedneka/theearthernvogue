@@ -10,12 +10,29 @@ export const productSchema = z.object({
     _id: z.string(),
     productCategory: z.string(),
   }),
-  productImage: z.any().optional(),
-  productDescription: z.string().min(1, { message: "Lyrics is required" }),
+  productImage: z
+    .any()
+    .optional()
+    .refine((files) => {
+      if (files && files.length > 0) {
+        // Validate that each file is an image
+        return Array.from(files).every((file: any) =>
+          ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(
+            file.type
+          )
+        );
+      }
+      return true; // If no file is selected, it's valid because the field is optional
+    }, "Only image files are allowed"),
+  productDescription: z
+    .string()
+    .min(1, { message: "Product Description is required" }),
   SKU: z.string().min(1, { message: "SKU is required" }),
   productPrice: z.number().min(0, { message: "Price must be greater then 0" }),
   MRP: z.number().min(0, { message: "Price must be greater then 0" }),
-  totalQuantity: z.number().min(0, { message: "Price must be greater then 0" }),
+  totalQuantity: z
+    .number()
+    .min(0, { message: "Quantity must be greater then 0" }),
   size: z.string().min(1, { message: "Size is required" }),
   weight: z.string().min(1, { message: "Weight is required" }),
   status: z.string().min(1, { message: "Status is required" }),

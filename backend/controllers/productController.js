@@ -56,9 +56,14 @@ exports.getProductByProductName = async (req, res) => {
 
 exports.updateProductById = async (req, res) => {
   const updateData = { ...req.body };
+  const imageUrls = [];
+  // Upload each image to S3 and store the S3 URL
+  for (const file of req.files) {
+    imageUrls.push(file.key); // Push S3 URL to imageUrls array
+  }
 
-  if (req.file) {
-    updateData.productImage = `/${req.file.key}`;
+  if (req.files.length > 0) {
+    updateData.productImage = imageUrls; // `/${req.file.key}`;
   }
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, updateData, {
