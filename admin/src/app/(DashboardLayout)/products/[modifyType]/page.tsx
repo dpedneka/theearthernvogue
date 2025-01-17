@@ -74,10 +74,11 @@ const AddProduct = () => {
         else formData.append(key, newProduct[key]);
       }
     });
-
-    newProduct.productImage.forEach((index: any) => {
-      formData.append("image", newProduct.productImage[index]);
-    });
+    if (newProduct.productImage.length > 0) {
+      for (const image of newProduct.productImage) {
+        formData.append("image", image);
+      }
+    }
     // formData.append("createdAt", Date.now().toString());
     // formData.append("updatedAt", Date.now().toString());
     if (modType === "update") formData.append("editId", editId);

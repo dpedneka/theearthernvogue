@@ -15,6 +15,7 @@ import {
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
+import Carousel from "@/components/carousels";
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
@@ -55,11 +56,12 @@ const ProductPage = ({ productDetail }: any) => {
             md: 6,
           }}
         >
-          <CardMedia
+          <Carousel images={productDetail.productImage} />
+          {/* <CardMedia
             sx={{ height: 380, borderRadius: 2 }}
             image={`${process.env.NEXT_PUBLIC_AMAZON_S3}${productDetail.productImage}`}
             title={`${productDetail.productName}`}
-          />
+          /> */}
         </Grid2>
 
         {/* Product Details */}
