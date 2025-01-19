@@ -12,6 +12,8 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 // import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -29,6 +31,8 @@ import {
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleQuantityChange = (type: "increment" | "decrement") => {
     setQuantity((prev) =>
@@ -210,6 +214,43 @@ const ProductPage = ({ productDetail }: any) => {
           </Stack>
         </Grid2>
       </Grid2>
+
+      {isMobile && (
+        <Grid2
+          container
+          spacing={4}
+          padding={1}
+          sx={{
+            backgroundColor: "#fff",
+            zIndex: 10,
+            position: "fixed",
+            bottom: 0,
+            width: "100%",
+            boxShadow: "-4px -1px 1px 0px #ccc",
+          }}
+        >
+          <Grid2
+            size={{
+              xs: 6,
+            }}
+          >
+            {productDetail.productName}
+            <br />
+            <small style={{ color: "red" }}>
+              Only {productDetail.totalQuantity} item(s) left
+            </small>
+          </Grid2>
+          <Grid2
+            size={{
+              xs: 6,
+            }}
+          >
+            <Button disabled variant="contained" color="success" fullWidth>
+              Add to Cart
+            </Button>
+          </Grid2>
+        </Grid2>
+      )}
     </Container>
   );
 };
