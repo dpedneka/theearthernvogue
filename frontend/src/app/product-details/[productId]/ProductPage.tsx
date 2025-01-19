@@ -107,7 +107,7 @@ const ProductPage = ({ productDetail }: any) => {
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography>Quantity:</Typography>
               <Button
-                style={{ fontSize: 16, padding: 0 }}
+                style={{ fontSize: 24, padding: 0, maxWidth: 30 }}
                 onClick={() => handleQuantityChange("decrement")}
               >
                 -

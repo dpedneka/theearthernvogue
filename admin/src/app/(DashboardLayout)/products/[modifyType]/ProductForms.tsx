@@ -61,7 +61,7 @@ const ProductForms = ({
       );
     }
   }, [productCategoriesQuery]);
-
+  console.log(errors);
   console.log(productImage);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

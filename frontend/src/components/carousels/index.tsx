@@ -18,7 +18,7 @@ const Carousel = ({ images }: any) => {
     setCurrentIndex(index);
   };
   return (
-    <div className="carousel" style={{ height: 380 }}>
+    <div className="carousel" style={{ position: "relative" }}>
       <img
         key={currentIndex}
         src={`${process.env.NEXT_PUBLIC_AMAZON_S3}/${images[currentIndex]}`}
@@ -45,7 +45,7 @@ const Carousel = ({ images }: any) => {
           </svg>
         </div>
       </div>
-      <div className="indicator">
+      <div className="indicator carousel-indicator">
         {images.map((_: any, index: any) => (
           <div
             key={index}

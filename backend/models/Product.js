@@ -21,6 +21,7 @@ const productSchema = new mongoose.Schema(
     totalQuantity: { type: Number, required: true },
     size: { type: String, required: true }, // "Length*Width*Breadth"
     weight: { type: String, required: true },
+    rating: { type: Number, required: false, default: 0 },
     // quantitySold: { type: Number, default: 0 },
     // quantityInStock: { type: Number, required: true },
     status: {

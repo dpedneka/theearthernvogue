@@ -10,20 +10,7 @@ export const productSchema = z.object({
     _id: z.string(),
     productCategory: z.string(),
   }),
-  productImage: z
-    .any()
-    .optional()
-    .refine((files) => {
-      if (files && files.length > 0) {
-        // Validate that each file is an image
-        return Array.from(files).every((file: any) =>
-          ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(
-            file.type
-          )
-        );
-      }
-      return true; // If no file is selected, it's valid because the field is optional
-    }, "Only image files are allowed"),
+  productImage: z.any().optional(),
   productDescription: z
     .string()
     .min(1, { message: "Product Description is required" }),
