@@ -18,13 +18,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
 import Carousel from "@/components/carousels";
-import {
-  CurrencyRupee,
-  Facebook,
-  Instagram,
-  LinkedIn,
-  Twitter,
-} from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
