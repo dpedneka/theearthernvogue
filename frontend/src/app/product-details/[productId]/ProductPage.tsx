@@ -16,6 +16,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
 import Carousel from "@/components/carousels";
+import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
@@ -107,7 +108,7 @@ const ProductPage = ({ productDetail }: any) => {
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography>Quantity:</Typography>
               <Button
-                style={{ fontSize: 24, padding: 0, maxWidth: 30 }}
+                style={{ fontSize: 24, padding: 0, minWidth: 30 }}
                 onClick={() => handleQuantityChange("decrement")}
               >
                 -
@@ -120,7 +121,7 @@ const ProductPage = ({ productDetail }: any) => {
                 sx={{ width: 60 }}
               />
               <Button
-                style={{ fontSize: 16, padding: 0 }}
+                style={{ fontSize: 16, padding: 0, minWidth: 30 }}
                 onClick={() => handleQuantityChange("increment")}
               >
                 +
@@ -158,19 +159,19 @@ const ProductPage = ({ productDetail }: any) => {
             </Typography>
 
             {/* Share Options */}
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} style={{ alignItems: "center" }}>
               <Typography>Share:</Typography>
               <IconButton>
-                <i className="fab fa-facebook"></i>
+                <Facebook />
               </IconButton>
               <IconButton>
-                <i className="fab fa-twitter"></i>
+                <Twitter />
               </IconButton>
               <IconButton>
-                <i className="fab fa-pinterest"></i>
+                <Instagram />
               </IconButton>
               <IconButton>
-                <i className="fab fa-linkedin"></i>
+                <LinkedIn />
               </IconButton>
             </Stack>
           </Stack>
