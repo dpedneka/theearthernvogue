@@ -8,6 +8,10 @@ import {
   Grid2,
   Stack,
   Container,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
 } from "@mui/material";
 // import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -15,14 +19,26 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
 import Carousel from "@/components/carousels";
-import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import {
+  CurrencyRupee,
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Twitter,
+} from "@mui/icons-material";
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (type: "increment" | "decrement") => {
     setQuantity((prev) =>
-      type === "increment" ? prev + 1 : prev > 1 ? prev - 1 : 1
+      type === "increment"
+        ? prev < productDetail.totalQuantity
+          ? prev + 1
+          : productDetail.totalQuantity
+        : prev > 1
+        ? prev - 1
+        : 1
     );
   };
 
@@ -75,8 +91,18 @@ const ProductPage = ({ productDetail }: any) => {
             <Typography variant="h4" fontWeight="bold">
               {productDetail.productName}
             </Typography>
-            <Typography variant="h5" color="green" fontWeight="bold">
+            <Typography variant="h5" color="#c23a3a" fontWeight="bold">
               Rs. {productDetail.MRP}
+              <small
+                style={{
+                  fontSize: 14,
+                  opacity: 0.6,
+                  marginLeft: 10,
+                  textDecoration: "line-through",
+                }}
+              >
+                Rs. {productDetail.productPrice}
+              </small>
             </Typography>
             <div dangerouslySetInnerHTML={{ __html: productDescription }} />
 
@@ -112,13 +138,14 @@ const ProductPage = ({ productDetail }: any) => {
               >
                 -
               </Button>
-              <TextField
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(parseInt(e.target.value))}
-                size="small"
-                sx={{ width: 60 }}
-              />
+              <FormControl fullWidth sx={{ m: 1, width: 50 }}>
+                <OutlinedInput
+                  sx={{ height: 40, textAlign: "center" }}
+                  id="filled-start-adornment"
+                  value={quantity}
+                  onChange={(e) => setQuantity(parseInt(e.target.value))}
+                />
+              </FormControl>
               <Button
                 style={{ fontSize: 16, padding: 0, minWidth: 30 }}
                 onClick={() => handleQuantityChange("increment")}
@@ -126,6 +153,13 @@ const ProductPage = ({ productDetail }: any) => {
                 +
               </Button>
             </Stack>
+            {productDetail.totalQuantity < 10 && (
+              <Stack direction="row" style={{ margin: 0 }}>
+                <small style={{ color: "red" }}>
+                  Only {productDetail.totalQuantity} item(s) left
+                </small>
+              </Stack>
+            )}
             <Stack direction="row" spacing={2}>
               <Button disabled variant="contained" color="success" fullWidth>
                 Add to Cart
