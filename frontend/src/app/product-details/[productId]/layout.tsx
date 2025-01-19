@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 export function generateMetadata({ params }: any) {
   const fromSlug = (slug: any) => {
     // Replace hyphens with spaces and capitalize each word's first letter
