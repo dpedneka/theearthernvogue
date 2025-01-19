@@ -8,7 +8,6 @@ import {
   Grid2,
   Stack,
   Container,
-  CardMedia,
 } from "@mui/material";
 // import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 // import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
