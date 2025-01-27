@@ -25,7 +25,7 @@
 }
 .left,
 .right {
-  background-color: #ff995d;
+  background-color: #c23a3a;
   color: #fff;
   padding: 10px 8px 8px 13px;
   margin: 0 20px;
@@ -39,7 +39,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: "pointer";
+  cursor: pointer;
   font-weight: bold;
 }
 .left {
@@ -61,5 +61,5 @@
   border-radius: 50%;
 }
 .active {
-  background-color: #ff995d;
+  background-color: #c23a3a;
 }

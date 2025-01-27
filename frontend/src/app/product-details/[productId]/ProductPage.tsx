@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   // Box,
   Typography,
@@ -18,10 +18,20 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import DOMPurify from "isomorphic-dompurify";
 import Carousel from "@/components/carousels";
-import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  NextPlanOutlined,
+  Twitter,
+} from "@mui/icons-material";
+import BreadCrumb from "@/components/breadcrumb";
+import { Roboto_Mono, Ubuntu } from "next/font/google";
+const roboto_condensed = Ubuntu({ subsets: ["latin"], weight: "700" });
 
 const ProductPage = ({ productDetail }: any) => {
   const [quantity, setQuantity] = useState(1);
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -83,7 +93,13 @@ const ProductPage = ({ productDetail }: any) => {
           }}
         >
           <Stack spacing={2}>
-            <Typography variant="h4" fontWeight="bold">
+            <BreadCrumb productName={productDetail.productName} />
+            <Typography
+              className={`${roboto_condensed.className}`}
+              variant="h4"
+              fontWeight="bold"
+              style={{ margin: 0 }}
+            >
               {productDetail.productName}
             </Typography>
             <Typography variant="h5" color="#c23a3a" fontWeight="bold">
@@ -99,7 +115,11 @@ const ProductPage = ({ productDetail }: any) => {
                 Rs. {productDetail.productPrice}
               </small>
             </Typography>
-            <div dangerouslySetInnerHTML={{ __html: productDescription }} />
+            <Typography
+              component={"h5"}
+              style={{ fontSize: "14px" }}
+              dangerouslySetInnerHTML={{ __html: productDescription }}
+            />
 
             {/* Color Options */}
             {/* <Stack direction="row" spacing={2} alignItems="center">

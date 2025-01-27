@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "The Earthern Vogue",
 };
 
-const raleway = Nunito({ subsets: ["latin"] });
+const nunito = Nunito({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${raleway.className}`}>
+      <body className={`antialiased ${nunito.className}`}>
         <AppRouterCacheProvider>
           <QCProvider>
             <ThemeProvider theme={theme}>

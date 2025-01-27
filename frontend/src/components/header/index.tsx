@@ -151,7 +151,6 @@ const Header = () => {
                 variant="body1"
                 sx={{
                   cursor: "pointer",
-                  color: "rgba(0, 0, 0, 0.54)",
                   display: "flex",
                   justifyContent: "center",
                 }}
@@ -163,7 +162,6 @@ const Header = () => {
                 variant="body1"
                 sx={{
                   cursor: "pointer",
-                  color: "rgba(0, 0, 0, 0.54)",
                   display: "flex",
                   justifyContent: "center",
                 }}
