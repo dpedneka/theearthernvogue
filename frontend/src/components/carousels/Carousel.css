@@ -1,65 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
-.App-header {
-  font-size: 1rem;
-  text-align: center;
-  font-family: "Oswald", sans-serif;
-  padding-bottom: 2rem;
-}
-.carousel-images {
-  position: relative;
-  border-radius: 10px;
-  height: 300px;
-  max-width: 300px;
-  margin: auto;
-  overflow: hidden;
-}
-.carousel-images img {
-  width: 99%;
-  height: 99%;
-  border-radius: 8px;
-  border: #ff00008e solid 2px;
-}
-.slide_direction {
-  display: flex;
-  justify-content: space-between;
-}
-.left,
-.right {
-  background-color: #c23a3a;
-  color: #fff;
-  padding: 10px 8px 8px 13px;
-  margin: 0 20px;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 10px;
-  height: 35px;
-  width: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-weight: bold;
-}
-.left {
-  left: 0;
-}
-.right {
-  right: 0;
-}
-.carousel-indicator {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.dot {
-  background-color: #333;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.active {
-  background-color: #c23a3a;
+/* .slick-active:nth-child(2n + 1) {
+  opacity: 0.6;
+} */
+
+.slick-dots li button:before {
+  font-size: 8px;
 }
